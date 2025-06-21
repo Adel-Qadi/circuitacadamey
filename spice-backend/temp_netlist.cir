@@ -1,0 +1,20 @@
+
+R1 1 0 100000
+Q1 2 4 1 Q2N2222
+R4 2 3 1
+R5 3 4 100000
+R3 4 0 100000
+R11 5 4 1
+V5 5 0 SIN( 0 5 100000 0n 0n 0n)
+V4 3 0 10
+C2 1 6 0.000005
+R6 6 0 3000
+.model Q2N2222 NPN
+.tran 0.1u 50u 
+.probeall 
+.control 
+run
+wrdata rc_data.txt v(4,2) v(6) i(Q1:C) i(Q1:B) i(Q1:E)* 5 2 
+
+.endc 
+.END
