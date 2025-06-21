@@ -245,8 +245,28 @@ res.json({
 });
 
 
+app.post('/runscam', (req, res) => {
+  const resultPath = path.join(__dirname, 'mna_results.txt');
 
+  exec('python scam_patched_fixed.py', (err, stdout, stderr) => {
+    if (err) {
+      console.error('❌ Python script execution failed:', stderr);
+      return res.status(500).json({ error: 'Python script execution failed' });
+    }
+
+    // Wait a brief moment to ensure the file is written (can be fine-tuned or replaced with fs.watch if needed)
+    setTimeout(() => {
+      if (!fs.existsSync(resultPath)) {
+        return res.status(404).json({ error: 'Result file not found' });
+      }
+
+      const resultText = fs.readFileSync(resultPath, 'utf8');
+      res.json({ result: resultText.trim() });
+    }, 100); // Optional small delay
+  });
+});
 
 app.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);
 });
+
