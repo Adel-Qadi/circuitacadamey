@@ -43,5 +43,19 @@ Current Limitations
 The symbolic explanation system doesnt support components like diodes and transistors are not yet supported
 
 
-*the front end code is in the main bracnh while the back end is in the backend branch, keep in mind the backend will try to launch a version of the front end on port 3000 if you wish to do that you need to add the web build file in the same directory as the backend 
+*note
+
+inorder for the backend to load properly you need to have ngspice, gnuplot, python, sympy all availabe on the server/computer its run from.
+
+if you have all the depencies you can simply run this commad in the directory of the spice-backend file, for example 
+
+- cd "C:\Users\Msys\flutter apps\flutter_application_1\spice-backend" //simply place the file path in between the quations
+  
+once youre in the directoy run 
+
+- node server.js
+
+this should give you the following output "🚀 Server running at http://localhost:3000" you can then open the link to view the website.
+
+
 
