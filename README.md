@@ -43,3 +43,5 @@ Current Limitations
 The symbolic explanation system doesnt support components like diodes and transistors are not yet supported
 
 
+*the front end code is in the main bracnh while the back end is in the backend branch, keep in mind the backend will try to launch a version of the front end on port 3000 if you wish to do that you need to add the web build file in the same directory as the backend 
+
